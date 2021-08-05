@@ -1,6 +1,5 @@
 flask 
 pmdarima
 gevent
-python-dateutil
 virtualenv
-pickle-mixin
+
