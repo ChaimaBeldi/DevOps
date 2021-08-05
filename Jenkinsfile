@@ -8,7 +8,6 @@ pipeline {
                 sh 'python -m virtualenv env'
                 sh 'env \\Scripts\\activate'
                 
-                
             }
         }
     }
