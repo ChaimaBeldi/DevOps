@@ -8,6 +8,7 @@ pipeline {
                 bat 'python -m virtualenv env'
                 bat 'virtualenv \\Scripts\\activate'
                 bat 'pip install pmdarima'
+                bat 'flask run'
             }
         }
     }
