@@ -2,10 +2,6 @@ pipeline {
     agent any
 
     stages {
-
-        stage('SCM') {
-                checkout scm
-            }
         stage('Build') {
             steps {
                 bat 'pip install --user -r requirements.txt '
