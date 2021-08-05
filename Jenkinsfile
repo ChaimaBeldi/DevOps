@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'pip install --user -r requirements.txt '
                 echo 'python -m virtualenv env'
-                echo 'env \Scripts\activate'
+                echo 'env \\Scripts\\activate'
                 
             }
         }
