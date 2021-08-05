@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "env \\\Scripts\\\activate"
+                sh 'pip install -r requirements.txt'
+                sh 'env \Scripts\activate'
             }
         }
     }
