@@ -2,14 +2,23 @@ pipeline {
     agent any
 
     stages {
+
+            stage('SCM') {
+                checkout scm
+            }
         stage('Build') {
             steps {
-                sh 'pip install --user -r requirements.txt '
-                sh 'python -m virtualenv env'
-                sh 'env \\Scripts\\activate'
+                bat 'pip install --user -r requirements.txt '
+                bat 'python -m virtualenv env'
+                bat 'virtualenv \\Scripts\\activate'
                 
                 
             }
-        }
+        stage('SonarQube Analysis') {
+            def scannerHome = tool 'SonarScanner';
+            withSonarQubeEnv() {
+                bat "${scannerHome}/bin/sonar-scanner"
+                }
+            }
     }
 }
