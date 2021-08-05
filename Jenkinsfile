@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                env \Scripts\activate
+                sh "env \\Scripts\\activate"
             }
         }
     }
