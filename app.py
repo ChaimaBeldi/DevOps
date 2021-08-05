@@ -123,7 +123,9 @@ def prediction():
 @app.route('/uploading', methods=['POST'])
 def process():
     files = request.files["myfile"]
+    print("-----------")
     print(files.filename)
+    print("-----------")
     files.save(os.path.join('./uploads',files.filename))
     tstexcel = False
     tstcsv = False
