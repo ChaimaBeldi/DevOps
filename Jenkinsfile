@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'pip install -r requirements.txt'
-                sh 'env \Scripts\activate'
+                sh 'py -m venv env'
+                sh 'env \\Scripts\\activate'
             }
         }
     }
