@@ -1,9 +1,4 @@
 flask 
-pandas
-json
-openpyxl
-xlrd 
-datetime
 pmdarima
 gevent
 python-dateutil
