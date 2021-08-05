@@ -1,5 +1,5 @@
-flask 
-pmdarima
-gevent
-virtualenv
+flask==1.1.2
+pmdarima==1.8.2
+gevent==21.1.2
+virtualenv==20.4.6
 
