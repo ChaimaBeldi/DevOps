@@ -7,7 +7,7 @@ pipeline {
                 bat 'pip install --user -r requirements.txt '
                 bat 'python -m virtualenv env'
                 bat 'virtualenv \\Scripts\\activate'
-                
+                bat 'pip install pmdarima'
             }
         }
     }
