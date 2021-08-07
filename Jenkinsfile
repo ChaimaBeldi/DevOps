@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh 'pip install --user -r requirements.txt'
                 sh 'set FLASK_APP = app.py'
-                sh 'flask run'
+                sh 'python -m flask run'
             }
         }
     }
