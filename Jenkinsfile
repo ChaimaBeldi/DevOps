@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo yum update -y'
-                sh 'sudo python3 -m venv python3-virtualenv'
-                sh 'sudo source python3-virtualenv/bin/activate'
+                sh 'yum update -y'
+                sh 'python3 -m venv python3-virtualenv'
+                sh 'source python3-virtualenv/bin/activate'
 
                 
             }
