@@ -9,16 +9,16 @@ pipeline {
                 sh 'python -m flask run'
             }
         }
-        stage('Sonar Analysis') {
+        stage('Sonar Scanner') {
             steps {
                 withSonarQubeEnv('sonar') {
-                    sh '/opt/sonar/bin/sonar-scanner'
+                    sh 'python app.py sonar:sonar'
                 }
             }
         }
         stage('Sonar Publish') {
             steps {
-                echo '/opt/sonar/bin/sonar-scanner'
+                sh '/opt/sonar/bin/sonar-scanner'
             }
         }
     }
