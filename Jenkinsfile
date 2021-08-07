@@ -6,8 +6,7 @@ pipeline {
             steps {
                 sh 'pip install --user -r requirements.txt'
                 sh 'pip install virtualenv'
-                sh 'virtualenv venv'
-                sh 'source venv/bin/activate'
+                sh 'source virtualenv/bin/activate'
                 
                 
             }
