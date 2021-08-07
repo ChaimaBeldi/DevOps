@@ -5,10 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'pip install --user -r requirements.txt'
-                sh 'apt install python-virtualenv -y'
-                sh 'virtualenv -p /usr/bin/python3 env'
-                sh '. env/bin/python3'
-                sh 'virtualenv \\Scripts\\activate'
+                sh 'apt-get install -y python3-venv'
+                sh 'python3 -m venv env'
+                sh 'source env/bin/activate'
                 
                 
             }
