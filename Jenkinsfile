@@ -4,11 +4,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pip install --user -r requirements.txt'
-                sh 'sudo yum install virtualenv'
-                sh 'virtualenv env'
-                sh 'source env/bin/activate'
-                
+                sh 'yum update -y'
+                sh 'python3 -m venv python3-virtualenv'
+                sh 'source python3-virtualenv/bin/activate'
+
                 
             }
         }
