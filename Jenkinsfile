@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Sonar Publish') {
             steps {
-                sh '/opt/sonar/bin/sonar-scanner'
+                echo '/opt/sonar/bin/sonar-scanner'
             }
         }
     }
