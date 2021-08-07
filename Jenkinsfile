@@ -4,11 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'yum update -y'
-                sh 'python3 -m venv python3-virtualenv'
-                sh 'source python3-virtualenv/bin/activate'
-
-                
+                sh 'pip install --user -r requirements.txt'
+                sh 'set FLASK_APP = app.py'
+                sh 'flask run'
             }
         }
     }
