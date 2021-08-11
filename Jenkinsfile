@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -8,10 +9,16 @@ pipeline {
                 bat 'set FLASK_APP = app.py'
             }
         }
-        stage('SonarQube Analysis') {
-            def scannerHome = tool 'SonarScanner';
-            withSonarQubeEnv() {
-                bat "${scannerHome}/bin/sonar-scanner"
+        stage('Sonar Scanner') {
+            steps {
+                withSonarQubeEnv('sonar') {
+                    bat 'python app.py sonar:sonar'
+                }
+            }
+        }
+        stage('Sonar Publish') {
+            steps {
+                bat '/opt/sonar/bin/sonar-scanner'
             }
         }
     }
