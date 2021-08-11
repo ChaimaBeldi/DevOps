@@ -5,8 +5,7 @@ pipeline {
         stages {
         stage('Build') {
             steps {
-               bat 'pip install -r requirements.txt'
-               bat 'set FLASK_APP = app.py'
+               bat 'apt-get install python'
             }
         }
         stage('Sonar Scanner') {
