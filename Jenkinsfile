@@ -5,7 +5,6 @@ pipeline {
         stages {
         stage('Build') {
             steps {
-                bat 'export PYTHONPATH=$WORKSPACE:$PYTHONPATH'
                 bat 'pip install -r requirements.txt'
             }
         }
