@@ -5,7 +5,7 @@ pipeline {
         stages {
         stage('Build') {
             steps {
-                bat 'pip install -r requirements.txt'
+              sh 'python --version'
             }
         }
         stage('Sonar Scanner') {
