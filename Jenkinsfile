@@ -5,7 +5,7 @@ pipeline {
         stages {
         stage('Build') {
             steps {
-               bat 'pip install -r requirements.txt'
+               bat 'sudo pip install -r requirements.txt'
                bat 'set FLASK_APP = app.py'
             }
         }
