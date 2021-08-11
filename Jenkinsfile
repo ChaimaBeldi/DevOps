@@ -17,7 +17,7 @@ pipeline {
                      -D sonar.projectVersion=1.0-SNAPSHOT \
                      -D sonar.login=admin \
                      -D sonar.password=123456 \
-                     -D sonar.projectBaseDir=C:\Windows\system32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\monoprix_devOps_develop \
+                     -D sonar.projectBaseDir=C:/Windows/system32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/monoprix_devOps_develop \
                      -D sonar.projectKey=my-app \
                      -D sonar.sourceEncoding=UTF-8 \
                      -D sonar.language=python \
