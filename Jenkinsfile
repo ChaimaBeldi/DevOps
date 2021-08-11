@@ -5,9 +5,9 @@ pipeline {
         stages {
             stage('Build') {
                 steps {
-                  python3 -m virtualenv local
-                    source ./local/bin/activate
-                    pip install --upgrade --requirement requirements.txt
+                 bat 'python3 -m virtualenv local'
+                 bat 'source ./local/bin/activate'
+                 bat 'pip install --upgrade --requirement requirements.txt'
                 }
             }
          
