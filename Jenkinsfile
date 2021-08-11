@@ -24,10 +24,7 @@ pipeline {
                      -D sonar.sources=app.py \
                      -D sonar.tests=app.py \
                      -D sonar.host.url=http://localhost:9000/"""
+              }
         }
-}
-       
         }
-      
-    }
 }
