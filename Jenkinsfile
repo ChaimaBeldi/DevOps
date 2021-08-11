@@ -6,7 +6,6 @@ pipeline {
             steps {
                 bat 'pip install --user -r requirements.txt'
                 bat 'set FLASK_APP = app.py'
-                bat 'python -m flask run'
             }
         }
         stage('Sonar Scanner') {
