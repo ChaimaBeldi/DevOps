@@ -13,10 +13,10 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script{
-                      def scannerHome = tool 'SonarQube';
-                       withSonarQubeEnv('SonarQube') {
-                       bat "python app.py sonar:sonar"
-                       }
+                       def scannerHome = tool 'SonarQube'
+                        withSonarQubeEnv('SonarQube') {
+                        bat "${scannerHome}/bin/sonar-scanner"
+                        }
                 }
             }
         }
