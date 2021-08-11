@@ -4,21 +4,21 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pip install --user -r requirements.txt'
-                sh 'set FLASK_APP = app.py'
-                sh 'python -m flask run'
+                bat 'pip install --user -r requirements.txt'
+                bat 'set FLASK_APP = app.py'
+                bat 'python -m flask run'
             }
         }
         stage('Sonar Scanner') {
             steps {
                 withSonarQubeEnv('sonar') {
-                    sh 'python app.py sonar:sonar'
+                    bat 'python app.py sonar:sonar'
                 }
             }
         }
         stage('Sonar Publish') {
             steps {
-                sh '/opt/sonar/bin/sonar-scanner'
+                bat '/opt/sonar/bin/sonar-scanner'
             }
         }
     }
