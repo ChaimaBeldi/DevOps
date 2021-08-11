@@ -2,24 +2,15 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                bat 'python pip install -r requirements.txt'
-                bat 'set FLASK_APP = app.py'
-            }
-        }
-        stage('Sonar Scanner') {
-            steps {
-                withSonarQubeEnv('sonar') {
-                    bat 'python app.py sonar:sonar'
+        stages {
+            stage('Build') {
+                steps {
+                  python3 -m virtualenv local
+                    source ./local/bin/activate
+                    pip install --upgrade --requirement requirements.txt
                 }
             }
+         
+          
         }
-        stage('Sonar Publish') {
-            steps {
-                bat '/opt/sonar/bin/sonar-scanner'
-            }
-        }
-    }
 }
