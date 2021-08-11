@@ -9,10 +9,10 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-    def scannerHome = tool 'SonarScanner';
-    withSonarQubeEnv() {
-      bat "${scannerHome}/bin/sonar-scanner"
-     }
-   }
- }
+            def scannerHome = tool 'SonarScanner';
+            withSonarQubeEnv() {
+                bat "${scannerHome}/bin/sonar-scanner"
+            }
+        }
+    }
 }
