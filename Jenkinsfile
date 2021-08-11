@@ -12,7 +12,7 @@ pipeline {
             
         stage('SonarQube Analysis') {
             steps {
-               bat ' def scannerHome = tool 'SonarQube''
+              def scannerHome = tool 'SonarQube'
                withSonarQubeEnv('SonarQube') {
                bat '""/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube/bin/sonar-scanner \
                      -D sonar.projectVersion=1.0-SNAPSHOT \
