@@ -7,7 +7,6 @@ pipeline {
             steps {
                bat 'pip install -r requirements.txt'
                bat 'set FLASK_APP = app.py'
-               bat 'python -m flask run'
             }
         }
             
