@@ -1,3 +1,6 @@
+from flask.helpers import flash, url_for
+from werkzeug.utils import redirect
+from tables import Product
 from flask import Flask, render_template , request
 from datetime import datetime
 from pmdarima import auto_arima
@@ -7,9 +10,28 @@ import os
 import json
 from gevent.pywsgi import WSGIServer
 from dateutil import relativedelta
-
-
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Bilel1998@localhost/flaskdb'
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+class Product(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    item_id = db.Column(db.Integer)
+    current_price = db.Column(db.Float)
+    title = db.Column(db.String(50))
+    description = db.Column(db.String(1000),nullable=True)
+
+    def __init__(self,item_id, current_price, title, description):
+        self.item_id = item_id
+        self.current_price = current_price
+        self.title = title
+        self.description = description
+
+
+
 
 @app.route('/')
 def hello_world():
@@ -230,6 +252,27 @@ def dataprocessing(data):
                 continue
 
     return datasetswithdelete
+
+@app.route('/new')
+def new_workout():
+    return render_template('create_product.html')
+
+
+@app.route('/new', methods=['POST'])
+def new_workout_post():
+    item_id = request.form.get('item_id')
+    current_price = request.form.get('current_price')
+    title = request.form.get('title')
+    description = request.form.get('description')
+
+    product = Product(item_id=item_id,current_price=current_price,title=title,description=description)
+    db.session.add(product)
+    db.session.commit()
+
+    flash('Your workout has been added!')
+
+    return redirect(url_for('hello_world'))
+
 
 if __name__ == '__main__':
     #app.run(host='localhost', debug=True, port=5000)
