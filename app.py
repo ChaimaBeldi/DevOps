@@ -1,6 +1,5 @@
 from flask.helpers import flash, url_for
 from werkzeug.utils import redirect
-from tables import Product
 from flask import Flask, render_template , request
 from datetime import datetime
 from pmdarima import auto_arima

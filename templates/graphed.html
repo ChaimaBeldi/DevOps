@@ -126,7 +126,6 @@
 	</style>
 </head>
 <body>
-<!--nav bar------------------------------------------------------------->
 <nav style="background-color: rgb(219, 51, 59) !important;" class="navbar navbar-light bg-light">
 	<a class="navbar-brand" href="/">
 		<img src="/static/img/logomonoprixwhite.png" style="width: 200px;"  alt="monoprix logo" width="80px" height="auto">
@@ -134,6 +133,9 @@
 	<a class="navbar-brand" href="/">
 		<button style="color: white;border-color: white;" class="btn btn-outline-secondary" onClick="window.location.reload();">Go Back to Main</button>
 	</a>
+	<a class="navbar-brand" href="/new">
+            <button class="btn btn-outline-secondary" style="color: white;border-color: white;" href="{{url_for('new_workout')}}">Add Product</button>
+    </a>
 	<a class="navbar-brand" href="/uploading">
 		<button class="btn btn-outline-secondary" style="color: white;border-color: white;" href="{{url_for('uploading')}}">Go to Upload Page</button>
 	</a>
