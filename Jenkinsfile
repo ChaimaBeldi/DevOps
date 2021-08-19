@@ -11,8 +11,7 @@ pipeline {
         }
         stage('Unit Test') {
             steps {
-                sh 'cd tests'
-                sh 'python ./tests/test.py'
+                sh 'python3 ./tests/test.py'
             }
         }
             
