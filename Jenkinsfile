@@ -12,7 +12,7 @@ pipeline {
         stage('Unit Test') {
             steps {
                 sh 'cd tests'
-                sh 'ls'
+                sh 'pwd'
                 sh 'python /tests/test.py'
             }
         }
