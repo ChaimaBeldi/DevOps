@@ -16,7 +16,7 @@ pipeline {
                         sh 'timeout 20s flask run&'
                     },
                     b: {
-                        sh 'python3 ./tests/unittest.py'
+                        sh 'python3 ./tests/test.py'
                     }
                 )
             }
