@@ -12,10 +12,10 @@ pipeline {
         stage('Unit Test') {
             steps {
                 parallel(
-                    a:{
+                    a: {
                         sh 'timeout 20s flask run&'
                     }
-                    b:{
+                    b: {
                         sh 'python3 ./tests/test.py'
                     }
                 )
