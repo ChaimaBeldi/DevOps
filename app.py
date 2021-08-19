@@ -280,5 +280,5 @@ if __name__ == '__main__':
     #sess.init_app(app)
     app.debug = True
     # Serve the app with gevent
-    http_server = WSGIServer(('0.0.0.0', 5000), app)
+    http_server = WSGIServer(('0.0.0.0', 8000), app)
     http_server.serve_forever()
