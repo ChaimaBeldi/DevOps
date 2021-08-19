@@ -7,6 +7,7 @@ pipeline {
             steps {
                 sh 'pip install -r requirements.txt'
                 sh 'set FLASK_APP = app.py'
+                sh 'ls'
             }
         }
             
