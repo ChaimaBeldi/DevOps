@@ -9,16 +9,6 @@ pipeline {
                 sh 'set FLASK_APP = app.py'
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-                script{
-                       def scannerHome = tool 'sonarqube'
-                        withSonarQubeEnv('sonarqube') {
-                            sh "${scannerHome}/bin/sonar-scanner"
-                        }
-                }
-            }
-        }
         stage('Unit Test') {
             steps {
                 parallel(
@@ -26,9 +16,19 @@ pipeline {
                         sh 'timeout 20s flask run&'
                     },
                     b: {
-                        sh 'python3 ./tests/test.py'
+                        sh 'python3 ./tests/unittest.py'
                     }
                 )
+            }
+        }
+         stage('SonarQube Analysis') {
+            steps {
+                script{
+                       def scannerHome = tool 'sonarqube'
+                        withSonarQubeEnv('sonarqube') {
+                            sh "${scannerHome}/bin/sonar-scanner"
+                        }
+                }
             }
         }
          stage('Selenium Testing') {
