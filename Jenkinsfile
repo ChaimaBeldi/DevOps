@@ -16,7 +16,7 @@ pipeline {
                         sh 'timeout 20s flask run&'
                     },
                     b: {
-                        sh 'python3 ./tests/test.py'
+                        sh 'coverage run ./tests/test.py'
                     }
                 )
             }
