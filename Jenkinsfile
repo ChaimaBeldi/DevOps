@@ -7,7 +7,12 @@ pipeline {
             steps {
                 sh 'pip install -r requirements.txt'
                 sh 'set FLASK_APP = app.py'
-                sh 'ls'
+            }
+        }
+        stage('Unit Test') {
+            steps {
+                sh 'cd tests'
+                sh 'python test.py'
             }
         }
             
