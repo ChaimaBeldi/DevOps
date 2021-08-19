@@ -27,6 +27,7 @@ class FrontTest(unittest.TestCase):
         wbD.find_element_by_xpath('/html/body/form/input').click()
         url = requests.get(wbD.current_url)
         assert url.status_code == 200
+        wbD.close()
 
 
 if __name__ == "__main__":
