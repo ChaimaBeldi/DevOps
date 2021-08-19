@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'cd tests'
                 sh 'ls'
-                sh 'python test.py'
+                sh 'python /tests/test.py'
             }
         }
             
