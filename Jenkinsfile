@@ -5,21 +5,33 @@ pipeline {
         stages {
         stage('Build') {
             steps {
-               bat 'pip install -r requirements.txt'
-               bat 'set FLASK_APP = app.py'
-                bat 'flask run'
+                sh 'pip install -r requirements.txt'
+                sh 'set FLASK_APP = app.py'
             }
         }
-            
         stage('SonarQube Analysis') {
             steps {
                 script{
                        def scannerHome = tool 'sonarqube'
                         withSonarQubeEnv('sonarqube') {
-                        bat "${scannerHome}/bin/sonar-scanner"
+                            sh "${scannerHome}/bin/sonar-scanner"
                         }
                 }
             }
         }
+        stage('Unit Test') {
+            steps {
+                parallel(
+                    a: {
+                        sh 'timeout 20s flask run&'
+                    },
+                    b: {
+                        sh 'python3 ./tests/test.py'
+                    }
+                )
+            }
+        }
+            
+    
         }
 }
