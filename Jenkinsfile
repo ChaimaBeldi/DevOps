@@ -12,6 +12,7 @@ pipeline {
         stage('Unit Test') {
             steps {
                 sh 'cd tests'
+                sh 'ls'
                 sh 'python test.py'
             }
         }
