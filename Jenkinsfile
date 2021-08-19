@@ -14,7 +14,7 @@ pipeline {
                 parallel(
                     a: {
                         sh 'timeout 20s flask run&'
-                    }
+                    },
                     b: {
                         sh 'python3 ./tests/test.py'
                     }
