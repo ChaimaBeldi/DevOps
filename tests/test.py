@@ -6,7 +6,7 @@ from werkzeug.wrappers import response
 import datetime
 app = Flask(__name__)
 class InterfaceTest(unittest.TestCase):
-    API_URL = "http://127.0.0.1:8000"
+    API_URL = "http://127.0.0.1:5000"
     UPLOAD_URL = "{}/uploading".format(API_URL)
     GRAPHED_URL = "{}/graphed".format(API_URL)
     def test_index_page_loads_html(self):
