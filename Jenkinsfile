@@ -33,7 +33,7 @@ pipeline {
         }
          stage('Selenium Testing') {
             steps {
-                sh 'python3 /tests/fronttest.py'
+                sh 'python3 tests/fronttest.py'
             }
         }   
     
