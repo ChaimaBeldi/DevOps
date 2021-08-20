@@ -33,7 +33,7 @@ pipeline {
         }
          stage('Selenium Testing') {
             steps {
-                sh 'chmod +x tests/geckodriver'
+                sh 'chmod +x tests'
                 sh 'python3 tests/fronttest.py'
             }
         }   
