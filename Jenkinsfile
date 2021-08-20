@@ -9,7 +9,20 @@ pipeline {
                 sh 'set FLASK_APP = app.py'
             }
         }
-        stage('SonarQube Analysis') {
+        stage('Unit Test') {
+            steps {
+                parallel(
+                    a: {
+                        sh 'timeout 20s flask run&'
+                    },
+                    b: {
+                        sh 'coverage run ./tests/utest.py'
+                        sh 'coverage report -m'
+                    }
+                )
+            }
+        }
+         stage('SonarQube Analysis') {
             steps {
                 script{
                        def scannerHome = tool 'sonarqube'
@@ -19,21 +32,10 @@ pipeline {
                 }
             }
         }
-        stage('Unit Test') {
-            steps {
-                parallel(
-                    a: {
-                        sh 'timeout 20s flask run&'
-                    },
-                    b: {
-                        sh 'python3 ./tests/test.py'
-                    }
-                )
-            }
-        }
          stage('Selenium Testing') {
             steps {
-                sh 'python3 ./tests/fronttest.py'
+                sh 'chmod +x tests/geckodriver'
+                sh 'python3 tests/fronttest.py'
             }
         }   
     
