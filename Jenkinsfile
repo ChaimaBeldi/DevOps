@@ -17,7 +17,7 @@ pipeline {
                     },
                     b: {
                         sh 'coverage run ./tests/utest.py'
-                        s 'coverage report'
+                        s 'coverage report -m'
                     }
                 )
             }
