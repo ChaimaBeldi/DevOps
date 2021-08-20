@@ -5,6 +5,7 @@ pipeline {
         stages {
         stage('Build') {
             steps {
+                cleanWs()
                 sh 'pip install -r requirements.txt'
                 sh 'set FLASK_APP = app.py'
             }
