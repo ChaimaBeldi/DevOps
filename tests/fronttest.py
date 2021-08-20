@@ -10,7 +10,7 @@ class FrontTest(unittest.TestCase):
         options = Options()
         options.add_argument("--headless")
         #self.wbD = wb.Chrome("C:\\Users\\bilel\\Desktop\\ovice\\devops_project\\monoprix\\DevOps\\static\\chromedriver.exe",chrome_options=options)
-        self.wbD = wb.Firefox(executable_path="geckodriver",options=options)
+        self.wbD = wb.Firefox(executable_path=".",options=options)
         self.wbD.get("http://127.0.0.1:5000")
         wbD = self.wbD
         #shop_id
