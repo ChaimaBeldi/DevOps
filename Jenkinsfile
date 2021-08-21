@@ -17,6 +17,7 @@ pipeline {
                     },
                     b: {
                         sh 'coverage run ./tests/utest.py'
+                        sh 'coverage report -m'
                     }
                 )
             }
@@ -33,8 +34,7 @@ pipeline {
         }
          stage('Selenium Testing') {
             steps {
-                sh 'chmod 777 tests/geckodriver'
-                sh 'chmod 777 /geckodriver'
+                sh 'chmod +x tests/geckodriver'
                 sh 'ls -ali'
                 sh 'python3 tests/fronttest.py'
             }
