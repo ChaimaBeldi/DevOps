@@ -34,6 +34,7 @@ pipeline {
          stage('Selenium Testing') {
             steps {
                 sh 'chmod +x tests/geckodriver'
+                sh 'chmod +x geckodriver'
                 sh 'ls -ali'
                 sh 'python3 tests/fronttest.py'
             }
