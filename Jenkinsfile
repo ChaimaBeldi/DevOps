@@ -22,7 +22,13 @@ pipeline {
                 )
             }
         }
-         stage('SonarQube Analysis') {
+         stage('Heroku Deployment') {
+            steps {
+                sh 'git push https://git.heroku.com/monop-devops.git'
+                }
+            }
+        }
+        stage('SonarQube Analysis') {
             steps {
                 script{
                        def scannerHome = tool 'sonarqube'
