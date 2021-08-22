@@ -26,8 +26,7 @@ pipeline {
             steps {
                 sh 'git push https://git.heroku.com/monop-devops.git'
                 }
-            }
-        }
+         }
         stage('SonarQube Analysis') {
             steps {
                 script{
