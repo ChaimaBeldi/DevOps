@@ -24,6 +24,7 @@ pipeline {
         }
          stage('Heroku Deployment') {
             steps {
+                sh 'heroku'
                 sh 'git push https://git.heroku.com/monop-devops.git'
                 }
          }
