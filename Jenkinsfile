@@ -24,9 +24,11 @@ pipeline {
         }
          stage('Heroku Deployment') {
             steps {
-                sh 'heroku login'
-                sh 'git push https://git.heroku.com/monop-devops.git'
+                withCredentials([[$class: 'StringBinding', credentialsId: 'heroku-api-key', variable: 'heroku-api-key']]) {
+                    sh 'heroku login'
+                    sh 'git push https://git.heroku.com/monop-devops.git'
                 }
+            }
          }
         stage('SonarQube Analysis') {
             steps {
