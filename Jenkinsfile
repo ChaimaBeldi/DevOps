@@ -46,7 +46,7 @@ pipeline {
                 sh 'python3 tests/fronttest.py'
             }
         }  
-         stqge ('Documentation'){
+         stage ('Documentation'){
              sh 'python3 -m pydoc -w app'
     
          }
