@@ -25,7 +25,6 @@ pipeline {
          stage('Heroku Deployment') {
             steps { 
                     withCredentials([[$class: 'StringBinding', credentialsId: 'heroku-api-key', variable: 'heroku-api-key']]) {   
-                        sh 'git fetch '
                         sh 'git pull https://git.heroku.com/devopsmonop.git HEAD:main'
                         sh 'git push https://git.heroku.com/devopsmonop.git HEAD:main'
                        }         
