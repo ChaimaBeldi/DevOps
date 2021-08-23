@@ -51,6 +51,7 @@ pipeline {
              steps {
                  sh 'python3 -m pydoc -w app'
                  sh 'echo $(pwd)/app.html'
+                 sh 'xdg-open app.html'
                  }
          }
         }
