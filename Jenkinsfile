@@ -24,6 +24,8 @@ pipeline {
         }
          stage('Heroku Deployment') {
             steps {
+                    sh 'git add .'
+                    sh 'git commit -m "modification"'
                     sh 'git push heroku main'
             }
          }
