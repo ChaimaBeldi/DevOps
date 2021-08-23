@@ -45,7 +45,10 @@ pipeline {
                 sh 'chmod +x tests/geckodriver'
                 sh 'python3 tests/fronttest.py'
             }
-        }   
+        }  
+         stqge ('Documentation'){
+             sh 'python3 -m pydoc -w app'
     
+         }
         }
 }
