@@ -47,8 +47,9 @@ pipeline {
             }
         }  
          stage ('Documentation'){
-             sh 'python3 -m pydoc -w app'
-    
+             steps {
+                 sh 'python3 -m pydoc -w app'
+                 }
          }
         }
 }
