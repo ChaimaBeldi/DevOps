@@ -24,11 +24,11 @@ pipeline {
         }
          stage('Heroku Deployment') {
             steps { 
-                    sh 'heroku git:remote -a devopsmonop'
-                    sh 'git pull heroku main'
+                    withCredentials([[$class: 'StringBinding', credentialsId: 'heroku-api-key', variable: 'heroku-api-key']]) {   
                     sh 'git add .'
                     sh 'git commit -m "modification"'
                     sh 'git push heroku main'
+                       }         
             }
          }
         stage('SonarQube Analysis') {
