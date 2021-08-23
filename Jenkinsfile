@@ -50,6 +50,7 @@ pipeline {
          stage ('Documentation'){
              steps {
                  sh 'python3 -m pydoc -w app'
+                 sh 'echo $(pwd)/app.html'
                  }
          }
         }
