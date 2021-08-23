@@ -13,14 +13,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-<<<<<<< HEAD
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456@localhost/flaskdb'
 #Url of heroku DB
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://khbrdgktpjuvfi:7867c3e5a0369771b1ae00038bce9bf40b3e96bf07a527ac0a2d38316ab69142@ec2-44-196-170-156.compute-1.amazonaws.com:5432/d1mm7s55qjri2t'
 
-=======
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://khbrdgktpjuvfi:7867c3e5a0369771b1ae00038bce9bf40b3e96bf07a527ac0a2d38316ab69142@ec2-44-196-170-156.compute-1.amazonaws.com:5432/d1mm7s55qjri2t'
->>>>>>> e5cdacfdd26e1e836384db3b5c01c091589af40f
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 class Product(db.Model):
