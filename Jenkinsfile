@@ -24,6 +24,7 @@ pipeline {
         }
          stage('Heroku Deployment') {
             steps { 
+                    sh 'heroku git:remote -a devopsmonop'
                     sh 'git pull heroku main'
                     sh 'git add .'
                     sh 'git commit -m "modification"'
