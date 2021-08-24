@@ -23,8 +23,9 @@ pipeline {
                         sh 'coverage report -m'
                     }
                 )
-                slackSend color: '#BADA55', message: 'UnitTest stage successfully works !!' 
+                 
             }
+            slackSend color: '#BADA55', message: 'UnitTest stage successfully works !!' 
         }
          stage('SonarQube Analysis') {
             steps {
@@ -61,10 +62,12 @@ pipeline {
                  slackSend color: '#BADA55', message: 'Documentation stage successfully works !!' 
                  }
          }
-        }
+        
         stage('slack notifications') {
-            steps {
-                slackSend color: '#BADA55', message: 'Pipeline successfully worked !!' 
+          
+                script{
+                    slackSend color: '#BADA55', message: 'Pipeline successfully worked !!' 
             }
         }
+}
 }
