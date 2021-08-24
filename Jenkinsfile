@@ -8,13 +8,10 @@ pipeline {
                 sh 'echo $(pwd)'
                 sh 'pip install -r requirements.txt'
                 sh 'set FLASK_APP = app.py'
+                slackSend color: '#BADA55', message: 'Build stage successfully works !!' 
             }
         }
-         stage('slack notifications') {
-            steps {
-                slackSend color: '#BADA55', message: 'Hello, World!' 
-            }
-        }
+        
         stage('Unit Test') {
             steps {
                 parallel(
@@ -26,6 +23,7 @@ pipeline {
                         sh 'coverage report -m'
                     }
                 )
+                slackSend color: '#BADA55', message: 'UnitTest stage successfully works !!' 
             }
         }
          stage('SonarQube Analysis') {
@@ -35,6 +33,7 @@ pipeline {
                         withSonarQubeEnv('sonarqube') {
                             sh "${scannerHome}/bin/sonar-scanner"
                         }
+                        slackSend color: '#BADA55', message: 'SonarQube stage successfully works !!' 
                 }
             }
         }
@@ -43,6 +42,7 @@ pipeline {
                     withCredentials([[$class: 'StringBinding', credentialsId: 'heroku-api-key', variable: 'heroku-api-key']]) {   
                         sh 'git pull https://git.heroku.com/devopsmonop.git HEAD:main'
                         sh 'git push https://git.heroku.com/devopsmonop.git HEAD:main'
+                        slackSend color: '#BADA55', message: 'Heroku Deployment stage successfully works !!' 
                        }         
             }
          }
@@ -50,6 +50,7 @@ pipeline {
             steps {
                 sh 'chmod +x tests/geckodriver'
                 sh 'python3 tests/fronttest.py'
+                slackSend color: '#BADA55', message: 'Selenium stage successfully works !!' 
             }
         }  
          stage ('Documentation'){
@@ -57,7 +58,13 @@ pipeline {
                  sh 'python3 -m pydoc -w app'
                  sh 'echo $(pwd)/app.html'
                  sh 'xdg-open app.html'
+                 slackSend color: '#BADA55', message: 'Documentation stage successfully works !!' 
                  }
          }
+        }
+        stage('slack notifications') {
+            steps {
+                slackSend color: '#BADA55', message: 'Pipeline successfully worked !!' 
+            }
         }
 }
