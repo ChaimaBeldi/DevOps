@@ -10,6 +10,11 @@ pipeline {
                 sh 'set FLASK_APP = app.py'
             }
         }
+         stage('slack notifications') {
+            steps {
+                slackSend color: '#BADA55', message: 'Hello, World!' 
+            }
+        }
         stage('Unit Test') {
             steps {
                 parallel(
