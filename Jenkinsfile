@@ -64,7 +64,9 @@ pipeline {
          }
         
         stage('slack notifications') {
+            steps {
                     slackSend color: '#BADA55', message: 'Pipeline successfully worked !!' 
+            }
             
         }
 }
