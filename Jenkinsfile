@@ -25,7 +25,6 @@ pipeline {
                 )
                  
             }
-             slackSend color: '#BADA55', message: 'UnitTest stage successfully works !!' 
            
         }
          stage('SonarQube Analysis') {
@@ -65,7 +64,6 @@ pipeline {
          }
         
         stage('slack notifications') {
-          
                     slackSend color: '#BADA55', message: 'Pipeline successfully worked !!' 
             
         }
